@@ -1,0 +1,52 @@
+What is EXCEPTION and EXCEPTION HANDLING??
+-
+Koi woh line aapki code ke andar jo aapne likhi ho aur uske wajah se FLOW INTERRUPT occur kare yaa phir FLOW OF PROGRAM break ho jaaye yaa phir ERRORNOUS results occur kare toh woh line EXCEPTION lekar aayegi aapke code ke andar 
+and jab hum certain manipulation perform krte hai iss line of code ke saath so that woh EXCEPTION occur naa kre usko hum EXCEPTION HANDLING kehte hai
+
+
+ERROR and EXCEPTION dono alag cheezein hai --
+** Error woh cheez hai jo agar occur karega toh uske aage pgm will not be executed, and hume logic ko correct krna padta hai yaa phir syntax ko correct krna padta hai so that error occur naa kre 
+
+** Exception woh cheez hai jo agar properly handle kiya gaya toh phir woh further execution ko stop nhi krti hai hamare code ke
+
+---------------- ERROR CODE -------------------
+public class ErrorExample {
+    public static void main(String[] args) {
+        recursiveMethod();
+    }
+
+    public static void recursiveMethod() {
+        recursiveMethod(); // This will cause StackOverflowError
+    }
+}
+
+----------------- EXCEPTION CODE ------------------
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class ExceptionExample {
+    public static void main(String[] args) {
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader("nonexistentfile.txt"));
+            String line = reader.readLine();
+            System.out.println(line);
+            reader.close();
+        } catch (IOException e) {
+            System.out.println("An I/O error occurred: " + e.getMessage());
+        }
+    }
+}
+
+
+TYPES of EXCEPTION HANDLING --
+
+CHECKED EXCEPTION - EXCEPTIONS which are detected during COMPILE TIME 
+{SQL Exception, IOException, ClassNotFoundException}
+
+
+UNCHECKED EXCEPTION - EXCEPTIONS which are detected during RUN TIME
+
+
+KEYWORDS 
+- TRY, CATCH, FINALLY, THROW, THROWS
