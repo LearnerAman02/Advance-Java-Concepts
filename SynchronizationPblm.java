@@ -2,16 +2,17 @@ public class SynchronizationPblm {
   public static void main(String[] args) {
     Stack st = new Stack(5);
     new Thread(() -> {
-      for (int i = 0; i < 10; i++) {
-        st.push(100);
-        System.out.println("Pushed!!");
+      for (int i = 0; i < 8; i++) {
+        System.out.println("Push Thread is executing!!");
+        st.push(200);
       }
-    }, "Pusher").start();
+    }, "PushThread").start();
     new Thread(() -> {
-      for (int i = 0; i < 10; i++) {
+      for (int i = 0; i < 8; i++) {
+        System.out.println("Pop Thread is executing!!");
         System.out.println("Popped : " + st.pop());
       }
-    }, "Popper").start();
+    }, "PopThread").start();
     System.out.println("popped value : " + st.pop());
   }
 }
@@ -66,3 +67,6 @@ class Stack {
     return val;
   }
 }
+
+Race condition arises due to no synchronization between threads (Push and Pop) because there may be scenario where stack mei value push nhi hui hai ab tak and while the Push Thread is on sleep
+Pop thread execute hoke pop karane ka try kar raha hai value ko
